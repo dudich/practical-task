@@ -3,3 +3,65 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.item-cart {
+  border-bottom: 2px solid gainsboro;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  list-style: none;
+
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info {
+    display: flex;
+    width: 75%;
+    padding-right: 60px;
+    border-right: 2px solid gainsboro;
+  }
+
+  &__img {
+    border-radius: 10px;
+    margin-right: 15px;
+  }
+
+  &__text {
+    text-align: left;
+  }
+
+  &__title {
+    margin: 0;
+  }
+
+  &__price {
+    position: relative;
+    width: 25%;
+  }
+
+  &__controls-delete {
+    margin-bottom: 20px;
+    text-align: right;
+    cursor: pointer;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__controls-btn {
+    padding: 5px 7px;
+    border-radius: 0;
+    border: 1px solid gainsboro;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  &__quantity {
+    margin: 0 10px;
+  }
+}
