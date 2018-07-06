@@ -4,11 +4,32 @@ body {
   font-family: sans-serif;
 }
 
+.cart {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.total-price {
+  margin-top: 30px;
+  text-align: right;
+  p {
+    margin-top: 15px;
+    font-size: 25px;
+    font-weight: 900;
+  }
+}
+
+.link-btn {
+  padding: 15px 60px;
+  border-radius: 0;
+  border: 1px solid gray;
+  background-color: gainsboro;
+  cursor: pointer;
+}
+
 .item-cart {
   border-bottom: 2px solid gainsboro;
   padding: 20px;
-  max-width: 800px;
-  margin: 0 auto;
   list-style: none;
 
 
