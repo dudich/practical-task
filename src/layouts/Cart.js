@@ -1,34 +1,34 @@
 import React, { Component } from 'react';
 import ItemsList from "../components/ItemsList";
-import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import axios from 'axios';
-
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import fetchItems from '../redux/actions/fetchItems';
 
 class Cart extends Component {
 
   componentDidMount() {
-    axios.get(`https://5b3f1866c3c3fb0014742880.mockapi.io/api/v1/items`)
-      .then(res => {
-        const items = res.data;
-        this.props.getItems(items);
-      });
+    this.props.fetchItems();
   };
 
   render() {
     const count = this.props.items.reduce((acc, item) => (acc + item.quantity * item.itemPrice), 0);
+    const items  = this.props.items;
 
     return (
-      <div className="cart">
-        <ItemsList/>
+      <div>
+        {items.length > 0 &&
+        <div className="cart">
 
-        <div className="total-price">
-          <p>{count} $</p>
+          <ItemsList/>
 
-          <Link to="/shipping">
-            <button className="link-btn" disabled={!count}>BUY</button>
-          </Link>
-        </div>
+          <div className="total-price">
+            <p>{count} $</p>
+
+            <Link to="/shipping">
+              <button className="link-btn" disabled={!count}>BUY</button>
+            </Link>
+          </div>
+        </div>}
       </div>
     );
   }
@@ -39,8 +39,8 @@ export default connect(
     items: state.items
   }),
   dispatch => ({
-    getItems: (items) => {
-      dispatch({type: 'GET_ITEMS', payload: items})
+    fetchItems: () => {
+      dispatch(fetchItems());
     },
   })
 )(Cart);

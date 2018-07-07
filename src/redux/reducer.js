@@ -3,7 +3,7 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-  if (action.type === 'GET_ITEMS') {
+  if (action.type === 'FETCH_ITEMS') {
     return {
       ...state,
       items: action.payload

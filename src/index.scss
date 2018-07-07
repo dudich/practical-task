@@ -153,3 +153,12 @@ body {
   text-align: left;
   color: red;
 }
+
+.empty-items {
+  margin-top: 100px;
+  text-align: center;
+  font-size: 25px;
+  span {
+    margin-right: 10px;
+  }
+}
