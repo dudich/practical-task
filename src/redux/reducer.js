@@ -32,6 +32,13 @@ export default function reducer(state = initialState, action) {
       ...state,
       items: [...state.items]
     }
+  } else if (action.type === 'CHANGE_QUANTITY') {
+
+    state.items[action.payload[0]].quantity = action.payload[1];
+    return {
+      ...state,
+      items: [...state.items]
+    }
   }
 
   return state;

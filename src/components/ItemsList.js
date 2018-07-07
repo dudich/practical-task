@@ -2,6 +2,12 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 
 class ItemsList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      maxValue: 100
+    }
+  }
 
   deleteItem (index) {
     this.props.onDeleteItem(index);
@@ -19,6 +25,18 @@ class ItemsList extends Component {
     const {history} = this.props;
     history.push(`${history.location.pathname}/${id}`)
   };
+
+  createSelectItems() {
+    let items = [];
+    for (let i = 0; i <= this.state.maxValue; i++) {
+      items.push(<option key={i} value={i}>{i}</option>);
+    }
+    return items;
+  }
+
+  dropdownSelected(index, event) {
+    this.props.onDropdownSelected(event.nativeEvent.target.selectedIndex, index)
+  }
 
   render() {
     return (
@@ -51,7 +69,10 @@ class ItemsList extends Component {
                         >
                           <i className="fas fa-minus"></i>
                         </button>
-                        <span className="item-cart__quantity">{item.quantity}</span>
+                        <select className="item-cart__quantity" onChange={this.dropdownSelected.bind(this, index) }>
+                          {this.createSelectItems()}
+                        </select>
+
                         <button className="item-cart__controls-btn item-cart__controls-increase"
                                 onClick={this.increaseQuantity.bind(this, index)}
                                 disabled={item.quantity >= 100}
@@ -88,6 +109,9 @@ export default connect(
 
     onDecreaseQuantity: (index) => {
       dispatch({type: 'DECREASE_QUANTITY', payload: index})
+    },
+    onDropdownSelected: (value, index) => {
+      dispatch({type: 'CHANGE_QUANTITY', payload: [index, value]})
     }
   })
 )(ItemsList);
