@@ -111,7 +111,7 @@ export default connect(
       dispatch({type: 'DECREASE_QUANTITY', payload: index})
     },
     onDropdownSelected: (value, index) => {
-      dispatch({type: 'CHANGE_QUANTITY', payload: [index, value]})
+      dispatch({type: 'CHANGE_QUANTITY', payload: {index, value}})
     }
   })
 )(ItemsList);

@@ -14,7 +14,7 @@ class Cart extends Component {
     const item = this.props.items.find(item => item.id === itemId);
 
     return (
-      <div>
+      <div className="itemCart">
         {this.props.items.length > 0 ?
           (<div className="item-cart">
           <div className="item-cart__container">
