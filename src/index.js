@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import './index.scss';
 import App from './App';
 import Cart from './layouts/Cart';
+import ItemCart from './layouts/ItemCart';
 import Shipping from './layouts/Shipping';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -17,6 +18,7 @@ ReactDOM.render((
       <Route exact path='/' component={ App } />
       <Route exact path='/cart' component={ Cart } />
       <Route exact path='/shipping' component={ Shipping } />
+      <Route path='/cart/:id' component={ ItemCart } />
     </Switch>
   </BrowserRouter>
   </Provider>

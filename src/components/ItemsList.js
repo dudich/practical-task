@@ -15,15 +15,20 @@ class ItemsList extends Component {
     this.props.onDecreaseQuantity(index);
   };
 
+  handleItemClick = (id) => {
+    const {history} = this.props;
+    history.push(`${history.location.pathname}/${id}`)
+  };
+
   render() {
     return (
-      <div className="App">
         <ul>
           {this.props.items.map((item, index) => {
             return (
               <li className="item-cart" key={index}>
                 <div className="item-cart__container">
-                  <div className="item-cart__info">
+
+                  <div className="item-cart__info" onClick={this.handleItemClick.bind(this, item.id)}>
                     <img src={item.img} alt="img" className="item-cart__img"/>
                     <div className="item-cart__text">
                       <h4  className="item-cart__title">{item.title}</h4>
@@ -64,7 +69,6 @@ class ItemsList extends Component {
             );
           }, this)}
         </ul>
-      </div>
     );
   }
 }

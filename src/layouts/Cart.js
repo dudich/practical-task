@@ -13,13 +13,14 @@ class Cart extends Component {
   render() {
     const count = this.props.items.reduce((acc, item) => (acc + item.quantity * item.itemPrice), 0);
     const items  = this.props.items;
+    const {history} = this.props;
 
     return (
       <div>
         {items.length > 0 &&
         <div className="cart">
 
-          <ItemsList/>
+          <ItemsList history={history}/>
 
           <div className="total-price">
             <p>{count} $</p>
