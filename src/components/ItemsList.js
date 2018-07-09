@@ -69,7 +69,7 @@ class ItemsList extends Component {
                         >
                           <i className="fas fa-minus"></i>
                         </button>
-                        <select className="item-cart__quantity" onChange={this.dropdownSelected.bind(this, index) }>
+                        <select className="item-cart__quantity" onChange={this.dropdownSelected.bind(this, index)} value={item.quantity}>
                           {this.createSelectItems()}
                         </select>
 
